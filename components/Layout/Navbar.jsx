@@ -84,17 +84,12 @@ const Header = () => {
                 ): ""}
 
         <Menu
-          showCatMenu={showCatMenu}
-          setShowCatMenu={setShowCatMenu}
-          dataMenu={data}
+
         />
 
         {mobileMenu && (
           <MenuMobile
-            showCatMenu={showCatMenu}
-            setShowCatMenu={setShowCatMenu}
             setMobileMenu={setMobileMenu}
-            dataMenu={data}
           />
         )}
 
