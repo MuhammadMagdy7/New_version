@@ -11,6 +11,8 @@ const Footer = () => {
   AVI
     </span>
   </h1>
+                      {/* IMAGE HERE */}
+
                         <img src="img/logo.png" alt="Logo" className="h-24" />
                     </div>
                     <div className="flex flex-col md:flex-row text-center md:text-left justify-between w-full md:w-auto space-y-6 md:space-y-0 md:space-x-12">

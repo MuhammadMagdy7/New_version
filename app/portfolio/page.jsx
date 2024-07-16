@@ -1,18 +1,18 @@
-// import Events from "@/components/UI/Events"
+import Events from "@/components/UI/Events"
 
 
 
 
-// const Portfolio = async () => {
+const Portfolio = async () => {
 
-//   return (
-//     <div>
-//      <Events />
-//     </div>
-//   )
-// }
+  return (
+    <div>
+     <Events />
+    </div>
+  )
+}
 
-// export default Portfolio
+export default Portfolio
 
 
 

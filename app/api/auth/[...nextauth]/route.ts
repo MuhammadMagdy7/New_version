@@ -1,12 +1,115 @@
-import NextAuth from "next-auth";
-import { Account, User as AuthUser } from "next-auth";
+
+
+// import NextAuth, { NextAuthOptions } from "next-auth";
+// import { Account, User as AuthUser } from "next-auth";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import bcrypt from "bcryptjs";
+// import User from "@/models/User";
+// import connect from "@/utils/db";
+
+// const authOptions: NextAuthOptions = {
+//   secret: process.env.NEXTAUTH_SECRET,
+//   providers: [
+//     CredentialsProvider({
+//       id: "credentials",
+//       name: "Credentials",
+//       credentials: {
+//         email: { label: "Email", type: "text" },
+//         password: { label: "Password", type: "password" },
+//       },
+//       async authorize(credentials) {
+//         await connect();
+//         try {
+//           const user = await User.findOne({ email: credentials?.email });
+//           if (user) {
+//             const isPasswordCorrect = await bcrypt.compare(
+//               credentials?.password,
+//               user.password
+//             );
+//             if (isPasswordCorrect) {
+//               return user;
+//             }
+//           }
+//         } catch (err) {
+//           throw new Error(err);
+//         }
+//       },
+//     }),
+//   ],
+//   callbacks: {
+//     async signIn({ user, account }: { user: AuthUser; account: Account }) {
+//       if (account?.provider === "credentials") {
+//         return true;
+//       }
+//       return false;
+//     },
+//   },
+// };
+
+// const handler = NextAuth(authOptions);
+// export { handler as GET, handler as POST };
+
+
+// import NextAuth from "next-auth";
+// import { Account, User as AuthUser } from "next-auth";
+// import CredentialsProvider from "next-auth/providers/credentials";
+// import bcrypt from "bcryptjs";
+// import User from "@/models/User";
+// import connect from "@/utils/db";
+
+// export const authOptions: any = {
+//     secret: process.env.NEXTAUTH_SECRET,
+//     providers: [
+//         CredentialsProvider({
+//             id: "credentials",
+//             name: "Credentials",
+//             credentials: {
+//                 email: { label: "Email", type: "text" },
+//                 password: { label: "Password", type: "password" },
+//             },
+//             async authorize(credentials: any) {
+//                 await connect();
+//                 try {
+//                     const user = await User.findOne({ email: credentials.email });
+//                     if (user && credentials?.password) {
+//                         const isPasswordCorrect = await bcrypt.compare(
+//                             credentials.password,
+//                             user.password
+//                         );
+//                         if (isPasswordCorrect) {
+//                             return user;
+//                         } else {
+//                             throw new Error("Incorrect password");
+//                         }
+//                     } else {
+//                         throw new Error("User not found or password is missing");
+//                     }
+//                 } catch (err: any) {
+//                     throw new Error(err.message || "Error during authorization");
+//                 }
+//             },
+//         }),
+//     ],
+//     callbacks: {
+//         async signIn({ user, account }: { user: AuthUser; account: Account }) {
+//             if (account?.provider == "credentials") {
+//                 return true;
+//             }
+//             return false;
+//         },
+//     },
+// };
+
+// export const handler = NextAuth(authOptions);
+// export { handler as GET, handler as POST };
+
+import NextAuth, { NextAuthOptions } from "next-auth";
 import CredentialsProvider from "next-auth/providers/credentials";
 import bcrypt from "bcryptjs";
 import User from "@/models/User";
 import connect from "@/utils/db";
- 
-export const authOptions: any = {
-    // Configure one or more authentication providers
+
+const authOptions: NextAuthOptions = {
     secret: process.env.NEXTAUTH_SECRET,
     providers: [
         CredentialsProvider({
@@ -16,33 +119,43 @@ export const authOptions: any = {
                 email: { label: "Email", type: "text" },
                 password: { label: "Password", type: "password" },
             },
-            async authorize(credentials: any) {
+            async authorize(credentials) {
                 await connect();
                 try {
-                    const user = await User.findOne({ email: credentials.email });
-                    if (user) {
+                    const user = await User.findOne({ email: credentials?.email });
+                    if (user && credentials?.password) {
                         const isPasswordCorrect = await bcrypt.compare(
                             credentials.password,
                             user.password
                         );
                         if (isPasswordCorrect) {
                             return user;
+                        } else {
+                            throw new Error("Incorrect password");
                         }
+                    } else {
+                        throw new Error("User not found or password is missing");
                     }
-                } catch (err: any) {
-                    throw new Error(err);
+                } catch (err) {
+                    // Use type assertion to specify that err is an Error
+                    if (err instanceof Error) {
+                        throw new Error(err.message || "Error during authorization");
+                    } else {
+                        throw new Error("Unknown error during authorization");
+                    }
                 }
             },
         }),
     ],
     callbacks: {
-        async signIn({ user, account }: { user: AuthUser; account: Account }) {
-            if (account?.provider == "credentials") {
+        async signIn({ user, account }) {
+            if (account?.provider === "credentials") {
                 return true;
             }
+            return false;
         },
     },
 };
- 
-export const handler = NextAuth(authOptions);
+
+const handler = NextAuth(authOptions);
 export { handler as GET, handler as POST };

@@ -13,7 +13,7 @@ import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
 
-const Header = ({ data }) => {
+const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [showCatMenu, setShowCatMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");

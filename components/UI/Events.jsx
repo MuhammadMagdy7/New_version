@@ -34,7 +34,7 @@ console.log(portfolio)
           Events
         </h1>
         <h2 className="text-black text-4xl font-bold text-center mt-2">
-          What's new?
+          What is new?
         </h2>
         <p className="text-center mt-2 text-paragraphColor">
           Do consectetur proident proident id eiusmod deserunt consequat
