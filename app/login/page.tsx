@@ -71,7 +71,7 @@ const Login = () => {
                 </label>
                 <input type="password" placeholder="Enter Password" required className="w-full input input-bordered input-primary" />
             </div>
-            <a href="#" className="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</a>
+            {/* <a href="#" className="text-xs text-gray-600 hover:underline hover:text-blue-600">Forget Password?</a> */}
             <div>
             <button
                 type="submit"
@@ -83,12 +83,12 @@ const Login = () => {
             <p className="text-red-600 text-[16px] mb-4">{error && error}</p>
             </div>
             </form>
-                <Link
+                {/* <Link
                     className="block text-center text-blue-500 hover:underline mt-2"
                     href="/register"
                  >
                 Register Here
-                </Link>
+                </Link> */}
             </div>
         </div>
         )

@@ -1,7 +1,5 @@
+//app/portfolio/page.jsx
 import Events from "@/components/UI/Events"
-
-
-
 
 const Portfolio = async () => {
 

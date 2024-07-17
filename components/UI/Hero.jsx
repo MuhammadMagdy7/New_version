@@ -1,36 +1,25 @@
-"use client"
-import AOS from 'aos';
-import 'aos/dist/aos.css'; // You can also use <link> for styles
-import { useEffect } from 'react';
+
 
 import { ButtonBase, ButtonPill } from '../Layout/Button'
-
+ 
 
 const Hero = () => {
-  useEffect(() => {
-    AOS.init({
-      offset: 200,
-      duration: 600,
-      easing: 'ease-in-sine',
-      delay: 100,
-    });
-  }, [])
+
 return (
 <div data-aos="fade-down">
 
 
           <div className="text-center bg-white py-16">
       <h1 className="text-4xl font-bold text-gray-900">
-        Website <span className="text-primaryColor">heading goes here</span>
+      Welcome to  <span className="text-secondaryColor">Version AVI</span>
       </h1>
       <p className="text-paragraphColor  mt-4">
-        Occaecat est ipsum reprehenderit reprehenderit veniam anim laborum est esse duis
-        occaecat reprehenderit pariatur.
+       where we bring your events to life with cutting-edge audio-visual solutions.
       </p>
 
       <div className='mt-8 space-x-5'>
-        <ButtonBase text="Join us now" />
-        <ButtonPill text="Request demo" />
+        <ButtonBase text="About us" link='/about' />
+        <ButtonPill text="Our services" link='/services' />
       </div>
       <div className="mt-12">
         <div

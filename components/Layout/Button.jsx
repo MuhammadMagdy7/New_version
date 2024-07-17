@@ -4,7 +4,7 @@ import React from "react";
 export const ButtonPill = ({text, className, link=''}) => {
   return (
 <Link
-  className={`inline-block rounded-lg border border-current px-8 py-3 text-sm font-medium text-primaryColor transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-blue-300 ${className}`}
+  className={`inline-block rounded-lg border border-current px-8 py-3 text-sm font-medium text-secondaryColor transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:text-red-300 ${className}`}
   href={link}
 >
   {text}
@@ -12,12 +12,12 @@ export const ButtonPill = ({text, className, link=''}) => {
   );
 };
 
-export const ButtonBase = ({text, className}) => {
+export const ButtonBase = ({text, className, link=''}) => {
   return (
 <Link
-  className={`inline-block rounded-lg bg-primaryColor px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-blue-300 ${className}`}
-  href="/"
->
+  className={`inline-block rounded-lg bg-secondaryColor px-8 py-3 text-sm font-medium text-white transition hover:scale-110 hover:shadow-xl focus:outline-none focus:ring active:bg-red-300 ${className}`}
+  href={link}>
+    
 {text}
 </Link>
   );

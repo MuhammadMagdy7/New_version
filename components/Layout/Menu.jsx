@@ -19,7 +19,7 @@ const Menu = () => {
             {data.map((item) => {
                 return (
                     <div key={item.id}>
-                            <li className={`cursor-pointer ${pathname === item?.url ? "text-primaryColor": ""}  `}>
+                            <li className={`cursor-pointer ${pathname === item?.url ? "text-secondaryColor": ""}  `}>
                                 <Link href={item?.url}>{item.name}</Link>
                             </li>
                     </div>

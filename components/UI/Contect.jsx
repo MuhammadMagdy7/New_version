@@ -4,31 +4,39 @@ import HeaderSec from "../Layout/Header";
 const ContectCom = () => {
   return (
     <div>
-
       <section className="bg-gray-100 py-12">
-      <HeaderSec title="Contect"/>
+        <HeaderSec title="Contect" />
         <div className="mx-auto max-w-screen-xl px-8 py-16 sm:px-16 lg:px-24">
           <div className="grid grid-cols-1 gap-x-16 gap-y-8 lg:grid-cols-5">
-            <div className="lg:col-span-2 lg:py-12">
+            <div data-aos="fade-right" className="lg:col-span-2 lg:py-12">
               <p className="max-w-xl text-lg">
-                At the same time, the fact that we are wholly owned and totally
-                independent from manufacturer and other group control gives you
-                confidence that we will only recommend what is right for you.
+                At <span className="text-primaryColor">Version AVI</span>, we pride ourselves on our independence and
+                dedication to our clients. As a wholly owned and completely
+                independent company, free from manufacturer or other group
+                control, we assure you that our recommendations are based solely
+                on what is best for you. This commitment to unbiased advice
+                gives you the confidence that we will always put your needs
+                first, providing the right solutions for your unique
+                requirements.
               </p>
 
               <div className="mt-8">
                 <a href="#" className="text-2xl font-bold text-pink-600">
                   {" "}
-                  0151 475 4450{" "}
+                  +201287934393{" "}
                 </a>
 
                 <address className="mt-2 not-italic">
-                  282 Kevin Brook, Imogeneborough, CA 58517
+                4 st sdat Masr el gdida,
+                Cairo, Egypt
                 </address>
               </div>
             </div>
 
-            <div className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12">
+            <div
+              data-aos="fade-left"
+              className="rounded-lg bg-white p-8 shadow-lg lg:col-span-3 lg:p-12"
+            >
               <form action="#" className="space-y-4">
                 <div>
                   <label className="sr-only" htmlFor="name">
