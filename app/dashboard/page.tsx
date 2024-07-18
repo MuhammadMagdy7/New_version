@@ -1,4 +1,4 @@
-//app/dashboard/page.tsx
+// app/dashboard/page.tsx
 "use client";
 
 import { useState, useEffect, useCallback } from "react";
@@ -7,12 +7,7 @@ import axios from "axios";
 import Tablecom from "@/components/Tablecom";
 import Link from "next/link";
 import Spinner from "@/components/Layout/Spinner";
-
-interface Item {
-  _id: string;
-  name: string;
-  images: string[];
-}
+import { Item } from "@/types";
 
 const useFetchData = <T extends Item>(url: string) => {
   const [data, setData] = useState<T[]>([]);
@@ -41,6 +36,7 @@ const useFetchData = <T extends Item>(url: string) => {
 
   return { data, setData, loading, error, refetch: fetchData };
 };
+
 export default function Admin() {
   const { data: session } = useSession();
   const {
@@ -116,7 +112,8 @@ export default function Admin() {
               Add Service
             </Link>
           }
-          onDelete={(id: string) => handleDelete(id, "services")}
+          onDelete={handleDelete}
+          type="services" // تمرير النوع هنا
         />
       </div>
       <div>
@@ -128,7 +125,8 @@ export default function Admin() {
               Add portfolio
             </Link>
           }
-          onDelete={(id: string) => handleDelete(id, "products")}
+          onDelete={handleDelete}
+          type="products" // تمرير النوع هنا
         />
       </div>
       <div>
@@ -140,7 +138,8 @@ export default function Admin() {
               Add customer
             </Link>
           }
-          onDelete={(id: string) => handleDelete(id, "employees")}
+          onDelete={handleDelete}
+          type="employees" // تمرير النوع هنا
         />
       </div>
     </div>
