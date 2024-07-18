@@ -17,3 +17,19 @@ export async function GET(request, { params }) {
         return NextResponse.json({ error: "Internal Server Error" }, { status: 500 });
     }
 }
+
+
+export async function DELETE(request, { params }) {
+    try {
+        const { id } = params;
+        await connect();
+        const result = await Product.findByIdAndDelete(id);
+        if (!result) {
+            return NextResponse.json({ message: "Product not found" }, { status: 404 });
+        }
+        return NextResponse.json({ success: true, message: "Product deleted successfully" });
+    } catch (error) {
+        console.error("Error in DELETE /api/Products/[id]:", error);
+        return NextResponse.json({ message: "Internal Server Error", error: error.message }, { status: 500 });
+    }
+}

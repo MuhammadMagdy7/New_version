@@ -39,20 +39,3 @@ export async function POST(req) {
         return NextResponse.json({ message: "Error creating product", error: error.message }, { status: 500 });
     }
 }
-
-export async function DELETE(req) {
-    try {
-        const id = req.nextUrl.searchParams.get("id");
-        if (!id) {
-            return NextResponse.json({ message: "Product ID is required" }, { status: 400 });
-        }
-
-        await connect();
-        await Service.findByIdAndDelete(id);
-
-        return NextResponse.json({ message: "Product deleted" }, { status: 200 });
-    } catch (error) {
-        console.error(error);
-        return NextResponse.json({ message: "Error deleting product", error: error.message }, { status: 500 });
-    }
-}

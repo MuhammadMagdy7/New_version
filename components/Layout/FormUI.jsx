@@ -125,7 +125,7 @@ const FormUI = ({ path }) => {
         />
 
         {files?.map((file, index) => (
-          <div key={index} className="flex min-h-44">
+          <div key={index} className="flex max-h-44">
             <PhotoCard
               url={URL.createObjectURL(file)}
               onClick={() => handleDeleteFile(index)}

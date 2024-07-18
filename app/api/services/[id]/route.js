@@ -19,6 +19,21 @@ export async function GET(request, { params }) {
 }
 
 
+export async function DELETE(request, { params }) {
+    try {
+        const { id } = params;
+        await connect();
+        const result = await Service.findByIdAndDelete(id);
+        if (!result) {
+            return NextResponse.json({ message: "Service not found" }, { status: 404 });
+        }
+        return NextResponse.json({ success: true, message: "Service deleted successfully" });
+    } catch (error) {
+        console.error("Error in DELETE /api/services/[id]:", error);
+        return NextResponse.json({ message: "Internal Server Error", error: error.message }, { status: 500 });
+    }
+}
+
 // export async function PUT(request, { params }) {
 //     const { id } = params;
 //     const { newName: name, newPrice: price, newdesc: category } = await request.json();
