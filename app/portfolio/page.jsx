@@ -18,7 +18,7 @@ const Portfolio = () => {
   }, []);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white">
+    <div className=" bg-gradient-to-b from-blue-50 to-white">
       <div className="container mx-auto py-16 px-4">
         <HeaderSec title="Our Portfolio" />
         {isClient && <Events />}

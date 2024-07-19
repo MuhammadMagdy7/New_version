@@ -7,6 +7,7 @@ import SessionProvider from "@/utils/SessionProvider";
 import Navbar from "@/components/Layout/Navbar";
 import Footer from "@/components/Layout/Footer";
 import Whatsapp from "@/components/Layout/Whatsapp";
+import Wrapper from "@/components/Layout/Wrapper";
 
 const inter = Inter({ subsets: ["latin"] });
 
@@ -30,7 +31,11 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Navbar />
+          <div className="min-h-screen">
+
           {children}
+          </div>
+
           <Footer />
           <Whatsapp />
         </SessionProvider>
