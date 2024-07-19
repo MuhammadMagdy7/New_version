@@ -1,55 +1,75 @@
-"use client"
+// components/UI/Trusted.jsx
+"use client";
 
-import axios from 'axios';
-import {  useEffect, useState } from 'react';
-import HeaderSec from '../Layout/Header';
-import Spinner from '../Layout/Spinner';
-import { usePathname } from 'next/navigation';
-
+import { useEffect, useState, useMemo } from "react";
+import Image from 'next/image';
+import axios from "axios";
+import Spinner from "../Layout/Spinner";
+import { motion } from 'framer-motion';
 
 const TrustedBySection = () => {
-  const [customers, setCustomers] = useState(null)
+  const [customers, setCustomers] = useState(null);
+  const [error, setError] = useState(null);
 
-  const pathname = usePathname()
   useEffect(() => {
-
-    const fetchServices = async () => {
+    const fetchCustomers = async () => {
       try {
         const response = await axios.get("/api/employees");
         setCustomers(response.data.products);
       } catch (error) {
-        console.error("Error fetching services:", error);
+        console.error("Error fetching customers:", error);
+        setError("عذرًا، حدث خطأ أثناء تحميل بيانات العملاء. يرجى المحاولة مرة أخرى لاحقًا.");
       }
     };
 
-    fetchServices();
-  }, [])
+    fetchCustomers();
+  }, []);
 
+  const customerGrid = useMemo(() => (
+    customers && (
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
+        {customers.map((logo, index) => (
+          <motion.div 
+            key={logo._id} 
+            className="flex justify-center"
+            initial={{ opacity: 0, scale: 0.5 }}
+            animate={{ opacity: 1, scale: 1 }}
+            transition={{ duration: 0.5, delay: index * 0.1 }}
+            whileHover={{ scale: 1.05 }}
+          >
+            <Image
+              src={logo.images[0]}
+              alt={logo.name}
+              width={100}
+              height={100}
+              className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
+            />
+          </motion.div>
+        ))}
+      </div>
+    )
+  ), [customers]);
+
+  if (error) {
     return (
-      <div className={`text-center ${pathname==='/customers' ? 'bg-blue-50': ''}`}>
-        {pathname==='/customers' ? (customers ? (<HeaderSec title="Our customers" />):('')) : ''}
-      {customers ? <div data-aos="fade-up">
-        <div className='text-center bg-blue-50'>
-
-        <div className="py-16">
-          <h2 className="text-center text-gray-600 text-lg mb-8">Trusted by</h2>
-          <div className="flex justify-center items-center space-x-16">
-            {customers.map((logo) => (
-              <div key={logo._id} className="flex justify-center items-center">
-                <img src={logo.images[0]} alt={logo.name} className="h-16"/>
-              </div>
-            ))}
-            </div>
-          </div>
-        </div>
-        </div>
-        
-        : (
-
-          <Spinner />
-)}
-        </div>
+      <div className="text-center text-red-600 py-16">
+        <p>{error}</p>
+      </div>
     );
   }
-  
-  export default TrustedBySection;
+
+  return (
+    <div>
+      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+        The Leading Companies That Trust Us
+      </h2>
+      {customers ? customerGrid : (
+        <div className="flex justify-center items-center h-64">
+          <Spinner />
+        </div>
+      )}
+    </div>
+  );
+};
+
+export default TrustedBySection;

@@ -1,36 +1,61 @@
-
-
-import { ButtonBase, ButtonPill } from '../Layout/Button'
- 
+import { motion } from 'framer-motion';
+import { ButtonBase, ButtonPill } from "../Layout/Button";
 
 const Hero = () => {
+  return (
+    <motion.div
+      initial={{ opacity: 0, y: 50 }}
+      animate={{ opacity: 1, y: 0 }}
+      transition={{ duration: 0.5, delay: 0.2 }}
+      className="bg-gradient-to-b from-blue-50 to-white py-20"
+    >
+      <div className="container mx-auto text-center">
+        <motion.h1
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.3 }}
+          className="text-5xl font-bold text-gray-900 mb-6"
+        >
+          Welcome to <span className="text-secondaryColor">Version AVI</span>
+        </motion.h1>
+        <motion.p
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.4 }}
+          className="text-xl text-paragraphColor mb-10 max-w-2xl mx-auto"
+        >
+          We offer advanced audio and visual solutions to make your events impressive.
+        </motion.p>
 
-return (
-<div data-aos="fade-down">
+        <motion.div
+          initial={{ opacity: 0, y: 20 }}
+          animate={{ opacity: 1, y: 0 }}
+          transition={{ duration: 0.5, delay: 0.5 }}
+          className="flex justify-center space-x-5 mb-16"
+        >
+          <ButtonBase text="Learn More About Us" link="/about" />
+          <ButtonPill text="Our Services" link="/services" />
+        </motion.div>
 
-
-          <div className="text-center bg-white py-16">
-      <h1 className="text-4xl font-bold text-gray-900">
-      Welcome to  <span className="text-secondaryColor">Version AVI</span>
-      </h1>
-      <p className="text-paragraphColor  mt-4">
-       where we bring your events to life with cutting-edge audio-visual solutions.
-      </p>
-
-      <div className='mt-8 space-x-5'>
-        <ButtonBase text="About us" link='/about' />
-        <ButtonPill text="Our services" link='/services' />
+        <motion.div
+          initial={{ opacity: 0, scale: 0.9 }}
+          animate={{ opacity: 1, scale: 1 }}
+          transition={{ duration: 0.5, delay: 0.6 }}
+          className="relative max-w-4xl mx-auto"
+        >
+          <img
+            src="/img/version5.jpg"
+            alt="Event setup"
+            className="rounded-lg shadow-2xl"
+          />
+          <div className="absolute inset-0 bg-black opacity-30 rounded-lg"></div>
+          <div className="absolute inset-0 flex items-center justify-center">
+            <p className="text-gray-300 text-3xl font-bold">We make your events extraordinary</p>
+          </div>
+        </motion.div>
       </div>
-      <div className="mt-12">
-        <div
+    </motion.div>
+  );
+};
 
-          className="relative bg-[url(https://images.unsplash.com/photo-1604014237800-1c9102c219da?ixlib=rb-1.2.1&ixid=MnwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHx8&auto=format&fit=crop&w=1770&q=80)] max-w-[100vh] h-[50vh] md:container md:w-[50vw] md:h-[50vh] bg-center "
-
-        ></div>
-      </div>
-    </div>
-    </div>
-  )
-}
-
-export default Hero
+export default Hero;

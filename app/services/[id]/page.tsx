@@ -1,5 +1,4 @@
-// // app/services/[id]/page.js
-
+// app/services/[id]/page.tsx
 'use client';
 
 import Breadcrumb from '@/components/Layout/Breadcrumb';
@@ -25,10 +24,9 @@ const Page = ({ params }: PageProps) => {
   const [service, setService] = useState<Service | null>(null);
   const [currentIndex, setCurrentIndex] = useState(0);
 
-
   const breadcrumbItems = [
     { label: 'Services', href: '/services' },
-    { label: service?.name || 'Project Details', href: `/portfolio/${params.id}` },
+    { label: service?.name || 'Service Details', href: `/services/${params.id}` },
   ];
 
   useEffect(() => {
@@ -45,45 +43,52 @@ const Page = ({ params }: PageProps) => {
   }, [params.id]);
 
   return (
-    <div className="min-h-screen mb-28">
+    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+      <div className="container mx-auto px-4">
+        <Breadcrumb items={breadcrumbItems} />
 
-  <Breadcrumb items={breadcrumbItems} />
+        {service ? (
+          <section className="mt-8">
+            <div className="bg-white rounded-xl shadow-lg overflow-hidden">
+              <div className="grid grid-cols-1 lg:grid-cols-2">
+                <div className="p-6 lg:p-8">
+                  <Carousel
+                    selectedItem={currentIndex}
+                    onChange={setCurrentIndex}
+                    showStatus={false}
+                    showThumbs={true}
+                    infiniteLoop={true}
+                    className="rounded-lg overflow-hidden"
+                  >
+                    {service.images.map((src, index) => (
+                      <div key={index} className="aspect-w-16 aspect-h-9">
+                        <img
+                          src={src}
+                          className="object-cover w-full h-full"
+                          alt={`${service.name} - Image ${index + 1}`}
+                        />
+                      </div>
+                    ))}
+                  </Carousel>
+                </div>
 
-      {service ? (
-        <section className="relative z-0">
-          <div className="mx-auto max-w-screen-2xl px-4 py-16 sm:px-6 lg:px-8">
-            <div className="grid grid-cols-1 lg:h-screen lg:grid-cols-2">
-              <div className="relative z-10 lg:py-16">
-                <Carousel selectedItem={currentIndex} onChange={setCurrentIndex}>
-                  {service.images.map((src, index) => (
-                    <div key={index} className="w-full h-full">
-                      <img
-                        src={src}
-                        className="w-full h-full object-cover"
-                        alt={`Slide ${index + 1}`}
-                      />
-                    </div>
-                  ))}
-                </Carousel>
-              </div>
-
-              <div className="relative flex items-center bg-gray-100">
-                <span className="hidden lg:absolute lg:inset-y-0 lg:-start-16 lg:block lg:w-16 lg:bg-gray-100"></span>
-
-                <div className="p-8 sm:p-16 lg:p-24">
-                  <h2 className="text-2xl font-bold sm:text-3xl">
+                <div className="p-6 lg:p-8 flex flex-col justify-center">
+                  <h1 className="text-3xl font-bold text-gray-800 mb-4">
                     {service.name}
-                  </h2>
-
-                  <p className="mt-4 text-gray-600">{service.description}</p>
+                  </h1>
+                  <p className="text-gray-600 leading-relaxed">
+                    {service.description}
+                  </p>
                 </div>
               </div>
             </div>
+          </section>
+        ) : (
+          <div className="flex justify-center items-center h-64">
+            <Spinner />
           </div>
-        </section>
-      ) : (
-        <Spinner />
-      )}
+        )}
+      </div>
     </div>
   );
 };

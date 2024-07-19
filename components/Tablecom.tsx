@@ -2,36 +2,32 @@
 import { Item } from "@/types";
 
 interface TablecomProps {
-  services?: Item[];
-  products?: Item[];
-  employees?: Item[];
+  items: Item[];
   button: JSX.Element;
-  onDelete: (id: string, type: string) => void; // تعديل النوع هنا
-  type: string; // إضافة خاصية 'type'
+  onDelete: (id: string, type: string) => void;
+  type: string;
 }
 
-const Tablecom: React.FC<TablecomProps> = ({ services, products, employees, button, onDelete, type }) => {
-  const items = services || products || employees || [];
-
+const Tablecom: React.FC<TablecomProps> = ({ items, button, onDelete, type }) => {
   return (
     <div>
       {items.length === 0 ? (
         <p>No items to display</p>
       ) : (
-        <table>
+        <table className="min-w-full bg-white">
           <thead>
             <tr>
-              <th>Name</th>
-              <th>Actions</th>
+              <th className="py-2 px-4 border-b border-gray-200 bg-gray-100">Name</th>
+              <th className="py-2 px-4 border-b border-gray-200 bg-gray-100">Actions</th>
             </tr>
           </thead>
           <tbody>
             {items.map((item) => (
               <tr key={item._id}>
-                <td>{item.name}</td>
-                <td>
+                <td className="py-2 px-4 border-b border-gray-200">{item.name}</td>
+                <td className="py-2 px-4 border-b border-gray-200">
                   <button
-                    onClick={() => onDelete(item._id, type)} // تمرير النوع هنا
+                    onClick={() => onDelete(item._id, type)}
                     className="inline-block rounded bg-red-600 px-4 py-2 text-xs font-medium text-white hover:bg-red-700"
                   >
                     Delete
@@ -42,7 +38,7 @@ const Tablecom: React.FC<TablecomProps> = ({ services, products, employees, butt
           </tbody>
         </table>
       )}
-      {button}
+      <div className="mt-4">{button}</div>
     </div>
   );
 };

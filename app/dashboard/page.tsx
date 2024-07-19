@@ -41,52 +41,51 @@ export default function Admin() {
   const { data: session } = useSession();
   const {
     data: services,
-    setData: setServices,
     loading: servicesLoading,
     error: servicesError,
     refetch: refetchServices,
   } = useFetchData<Item>("/api/services");
   const {
     data: products,
-    setData: setProducts,
     loading: productsLoading,
     error: productsError,
     refetch: refetchProducts,
   } = useFetchData<Item>("/api/products");
   const {
     data: employees,
-    setData: setEmployees,
     loading: employeesLoading,
     error: employeesError,
     refetch: refetchEmployees,
   } = useFetchData<Item>("/api/employees");
 
-  const handleDelete = useCallback(async (id: string, type: string) => {
-    try {
-      const response = await axios.delete(`/api/${type}/${id}`);
-      if (response.data.success) {
-        alert("Data deleted successfully");
-        // Refresh data here by refetching
-        switch (type) {
-          case 'products':
-            refetchProducts();
-            break;
-          case 'services':
-            refetchServices();
-            break;
-          case 'employees':
-            refetchEmployees();
-            break;
-          default:
-            break;
+  const handleDelete = useCallback(
+    async (id: string, type: string) => {
+      try {
+        const response = await axios.delete(`/api/${type}/${id}`);
+        if (response.data.success) {
+          alert("Data deleted successfully");
+          switch (type) {
+            case "products":
+              refetchProducts();
+              break;
+            case "services":
+              refetchServices();
+              break;
+            case "employees":
+              refetchEmployees();
+              break;
+            default:
+              break;
+          }
+        } else {
+          throw new Error(response.data.error || "Unknown error occurred");
         }
-      } else {
-        throw new Error(response.data.error || "Unknown error occurred");
+      } catch (error: any) {
+        alert(`Error deleting data: ${error.message}`);
       }
-    } catch (error: any) {
-      alert(`Error deleting data: ${error.message}`);
-    }
-  }, [refetchProducts, refetchServices, refetchEmployees]);
+    },
+    [refetchProducts, refetchServices, refetchEmployees]
+  );
 
   if (!session) {
     return <p>Access Denied</p>;
@@ -106,40 +105,40 @@ export default function Admin() {
       <div>
         <h2 className="text-2xl font-semibold mb-4">Services</h2>
         <Tablecom
-          services={services}
+          items={services}
           button={
             <Link className="btn" href="/addService">
               Add Service
             </Link>
           }
           onDelete={handleDelete}
-          type="services" // تمرير النوع هنا
+          type="services"
         />
       </div>
       <div>
         <h2 className="text-2xl font-semibold mb-4">Portfolio</h2>
         <Tablecom
-          products={products}
+          items={products}
           button={
             <Link className="btn" href="/addProduct">
-              Add portfolio
+              Add Portfolio
             </Link>
           }
           onDelete={handleDelete}
-          type="products" // تمرير النوع هنا
+          type="products"
         />
       </div>
       <div>
         <h2 className="text-2xl font-semibold mb-4">Customers</h2>
         <Tablecom
-          employees={employees}
+          items={employees}
           button={
             <Link className="btn" href="/addEmployee">
-              Add customer
+              Add Customer
             </Link>
           }
           onDelete={handleDelete}
-          type="employees" // تمرير النوع هنا
+          type="employees"
         />
       </div>
     </div>
