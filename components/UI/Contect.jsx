@@ -5,7 +5,7 @@ import HeaderSec from "../Layout/Header";
 const ContactCom = () => {
   return (
     <div className="overflow-hidden"> {/* Added overflow-hidden here */}
-      <section className="bg-gray-100 py-12">
+      <section className="py-12">
         <HeaderSec title="Contact Us" />
         <div className="mx-auto max-w-screen-xl px-4 sm:px-6 lg:px-8 py-16">
           <div className="grid grid-cols-1 gap-y-8 lg:grid-cols-5 lg:gap-x-16">

@@ -23,7 +23,7 @@ const MenuMobile = ({
                 return (
                     <div key={item.id}>
 
-                            <li className={`py-4 px-5 border-b ${pathname === item?.url ? "text-secondaryColor": ""}`}>
+                            <li className={`hover:text-secondaryColor py-4 px-5 border-b ${pathname === item?.url ? "text-secondaryColor": ""}`}>
                                 <Link
                                     href={item?.url}
                                     onClick={() => setMobileMenu(false)}

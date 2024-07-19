@@ -11,7 +11,6 @@ const data = [
     { id: 6, name: "Contact", url: "/contact" },
 ];
 
-
 const Menu = () => {
     const pathname = usePathname();
     return (
@@ -19,7 +18,7 @@ const Menu = () => {
             {data.map((item) => {
                 return (
                     <div key={item.id}>
-                            <li className={`cursor-pointer ${pathname === item?.url ? "text-secondaryColor": ""}  `}>
+                            <li className={`hover:text-secondaryColor cursor-pointer ${pathname === item?.url ? "text-secondaryColor": ""}  `}>
                                 <Link href={item?.url}>{item.name}</Link>
                             </li>
                     </div>
