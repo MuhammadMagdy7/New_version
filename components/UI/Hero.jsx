@@ -33,7 +33,7 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.5 }}
           className="flex justify-center space-x-5 mb-16"
         >
-          <ButtonBase text="Learn More About Us" link="/about" />
+          <ButtonBase text="About Us" link="/about" />
           <ButtonPill text="Our Services" link="/services" />
         </motion.div>
 
