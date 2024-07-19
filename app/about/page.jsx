@@ -1,6 +1,5 @@
 "use client"
 
-import { useEffect } from 'react';
 import dynamic from 'next/dynamic';
 import { motion } from 'framer-motion';
 import AboutSection from "@/components/UI/AboutSection"
@@ -9,9 +8,7 @@ import HeaderSec from "@/components/Layout/Header"
 const MotionDiv = dynamic(() => import('framer-motion').then((mod) => mod.motion.div), { ssr: false });
 
 const About = () => {
-  useEffect(() => {
-    // يمكنك إضافة أي تأثيرات جانبية هنا إذا لزم الأمر
-  }, []);
+
 
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
