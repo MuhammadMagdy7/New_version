@@ -7,7 +7,7 @@ const Hero = () => {
       initial={{ opacity: 0, y: 50 }}
       animate={{ opacity: 1, y: 0 }}
       transition={{ duration: 0.5, delay: 0.2 }}
-      className="bg-gradient-to-b from-blue-50 to-white py-20"
+      className="py-20"
     >
       <div className="container mx-auto text-center">
         <motion.h1

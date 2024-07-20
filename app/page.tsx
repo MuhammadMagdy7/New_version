@@ -5,7 +5,8 @@ import { motion } from "framer-motion";
 import TrustedBySection from "@/components/UI/Trusted";
 import Hero from "@/components/UI/Hero";
 import HomeCarousel from "@/components/UI/Carousel";
-
+import Events from "@/components/UI/Events";
+import GetStarted from "@/components/Layout/CardWork";
 export default function Home() {
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -24,7 +25,13 @@ export default function Home() {
     >
       <HomeCarousel />
       <Hero />
+      <div className="container pb-12 space-y-16">
       <TrustedBySection />
+      <h2 className="text-3xl font-extrabold text-center">Portfolio</h2>
+      <Events />
+      </div>
+<GetStarted />
+
     </motion.div>
   );
 }

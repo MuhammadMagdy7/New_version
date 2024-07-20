@@ -14,8 +14,8 @@ export const metadata: Metadata = {
   description:
     "Versionavi is a premier company specializing in the rental and sales of high-quality audio-visual equipment in Egypt. We offer comprehensive services including LED screens, sound systems, lighting, and photography/videography. With over 13 years of experience and a dedicated team, we ensure innovative and reliable solutions for all your event needs. Join us today and experience the Versionavi difference.",
     icons: {
-      icon: '/img/logo.ico',
-    },
+    icon: "/img/logo.ico",
+  },
   };
 
 
@@ -33,7 +33,7 @@ export default async function RootLayout({
       <body className={inter.className}>
         <SessionProvider session={session}>
           <Navbar />
-          <div className="min-h-screen">
+          <div className="min-h-screen bg-gradient-to-b from-white to-blue-50">
 
           {children}
           </div>

@@ -18,7 +18,7 @@ const About = () => {
 
   return (
     <MotionDiv
-      className="bg-gradient-to-b from-blue-50 to-white"
+      // className="bg-gradient-to-b from-blue-50 to-white"
       initial="initial"
       animate="animate"
       exit="exit"

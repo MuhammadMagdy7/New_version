@@ -10,7 +10,6 @@ const Services = () => {
       initial={{ opacity: 0 }}
       animate={{ opacity: 1 }}
       transition={{ duration: 0.5 }}
-      className=" bg-gradient-to-b from-blue-50 to-white"
     >
       <FeaturesSection />
     </motion.div>

@@ -10,7 +10,7 @@ const ContactCom = dynamic(() => import("@/components/UI/Contect.jsx"), {
 
 const Contact = () => {
   return (
-    <div className=" bg-gradient-to-b from-blue-50 to-white">
+    <div className="">
       <Suspense fallback={<Spinner />}>
         <ContactCom />
       </Suspense>
