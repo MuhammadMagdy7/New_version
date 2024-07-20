@@ -62,7 +62,7 @@ const Events = () => {
               whileHover={{ scale: 1.05 }}
             >
               <Link href={`/portfolio/${item._id}`} className="block">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl flex flex-col h-full">
+                <div className="bg-white rounded-lg shadow-md overflow-hidden my-12 transition hover:shadow-xl flex flex-col h-full">
                   <div className="h-48 relative overflow-hidden">
                     <Image
                       src={item.images[0]}

@@ -2,7 +2,7 @@ import Image from "next/image";
 import { ButtonPill } from "./Button";
 
 const GetStarted = () => {
-  return (<div className="flex items-center justify-center py-10">
+  return (<div className="flex items-center justify-center py-24">
     <div className="container mx-auto">
       <div className="flex flex-col-reverse md:flex-row bg-white rounded-lg shadow-md overflow-hidden">
         <div className=" bg-pink-500 text-white p-10 md:w-1/2 flex flex-col justify-center">

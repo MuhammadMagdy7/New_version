@@ -20,8 +20,13 @@ const Portfolio = () => {
   return (
     <div>
       <div className="container mx-auto py-16 px-4">
+        {isClient && 
+        <div>
         <HeaderSec title="Our Portfolio" />
-        {isClient && <Events />}
+        <Events />
+        </div>
+      }
+
       </div>
     </div>
   );
