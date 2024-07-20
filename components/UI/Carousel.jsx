@@ -10,7 +10,6 @@ const slides = [
   {
     image: '/img/version3.jpg',
     legend: 'فريق محترف لتلبية احتياجاتك'
-
   },
   {
     image: '/img/version2.jpg',

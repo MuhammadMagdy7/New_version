@@ -3,7 +3,7 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 
-const page = () => {
+const Page = () => {
   const { data: session } = useSession();
 
   if (!session) {
@@ -12,7 +12,7 @@ const page = () => {
 
   return (
     <div>
-      page
+      Page
       <Link
         className="block text-center text-blue-500 hover:underline mt-2"
         href="/register"
@@ -23,4 +23,4 @@ const page = () => {
   );
 };
 
-export default page;
+export default Page;
