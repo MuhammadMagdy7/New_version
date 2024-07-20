@@ -18,10 +18,12 @@ const Customers = () => {
           initial={{ opacity: 0, y: 50 }}
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5 }}
-          className="mb-20"
+          className="mb-20 py-20"
         >
           <TrustedBySection />
         </motion.section>
+
+        <hr className="border-t-2 border-gray-300 my-4" />
 
         <motion.section 
           initial={{ opacity: 0, y: 50 }}
@@ -30,7 +32,7 @@ const Customers = () => {
           className="mb-20"
         >
           
-          <h2 className="text-5xl font-bold text-center mb-8 text-primaryColor">Our Clients' Experiences</h2>
+          <h2 className="text-5xl font-bold text-center my-8 pt-16 text-primaryColor">Our Clients' Experiences</h2>
           <TestimonialSection />
         </motion.section>
 

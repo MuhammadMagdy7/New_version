@@ -61,7 +61,7 @@ const TestimonialSection = () => {
   ), [currentTestimonial]);
 
   return (
-    <section className="py-12">
+    <section className="py-20">
       <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
         {currentTestimonialContent}

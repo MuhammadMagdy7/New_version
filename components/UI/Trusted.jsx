@@ -27,7 +27,7 @@ const TrustedBySection = () => {
 
   const customerGrid = useMemo(() => (
     customers && (
-      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 items-center">
+      <div className="grid grid-cols-2 md:grid-cols-3 lg:grid-cols-4 gap-8 py-12 items-center">
         {customers.map((logo, index) => (
           <motion.div 
             key={logo._id} 
@@ -40,8 +40,8 @@ const TrustedBySection = () => {
             <Image
               src={logo.images[0]}
               alt={logo.name}
-              width={100}
-              height={100}
+              width={120}
+              height={120}
               className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
             />
           </motion.div>
