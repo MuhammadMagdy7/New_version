@@ -11,7 +11,7 @@ export default function Home() {
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
     animate: { opacity: 1, y: 0 },
-    exit: { opacity: 0, y: -20 }
+    exit: { opacity: 0, y: -20 },
   };
 
   return (
@@ -26,18 +26,16 @@ export default function Home() {
       <HomeCarousel />
       <Hero />
       <div className="container pb-12 space-y-16">
+        <TrustedBySection />
+        <hr className="border-t-2 border-gray-300 my-4" />
 
-      <TrustedBySection />
-      <hr className="border-t-2 border-gray-300 my-4" />
+        <h2 className="text-3xl font-extrabold text-center">Portfolio</h2>
+        <Events />
 
-      <h2 className="text-3xl font-extrabold text-center">Portfolio</h2>
-      <Events />
-
-      <hr className="border-t-2 border-gray-300 my-4" />
+        <hr className="border-t-2 border-gray-300 my-4" />
       </div>
 
-<GetStarted />
-
+      <GetStarted />
     </motion.div>
   );
 }
