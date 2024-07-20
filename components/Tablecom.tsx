@@ -10,11 +10,11 @@ interface TablecomProps {
 
 const Tablecom: React.FC<TablecomProps> = ({ items, button, onDelete, type }) => {
   return (
-    <div>
+    <div className="pb-12 ">
       {items.length === 0 ? (
         <p>No items to display</p>
       ) : (
-        <table className="min-w-full bg-white">
+        <table className="min-w-full bg-white ">
           <thead>
             <tr>
               <th className="py-2 px-4 border-b border-gray-200 bg-gray-100">Name</th>
@@ -23,7 +23,7 @@ const Tablecom: React.FC<TablecomProps> = ({ items, button, onDelete, type }) =>
           </thead>
           <tbody>
             {items.map((item) => (
-              <tr key={item._id}>
+              <tr key={item._id} className="w-full text-center">
                 <td className="py-2 px-4 border-b border-gray-200">{item.name}</td>
                 <td className="py-2 px-4 border-b border-gray-200">
                   <button
@@ -38,7 +38,7 @@ const Tablecom: React.FC<TablecomProps> = ({ items, button, onDelete, type }) =>
           </tbody>
         </table>
       )}
-      <div className="mt-4">{button}</div>
+      <div className="mt-4 text-center">{button}</div>
     </div>
   );
 };

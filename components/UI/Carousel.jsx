@@ -8,7 +8,7 @@ import { motion } from 'framer-motion';
 // ... (الجزء الخاص بـ slides يبقى كما هو)
 const slides = [
   {
-    image: '/img/version1.jpg',
+    image: '/img/version3.jpg',
     legend: 'فريق محترف لتلبية احتياجاتك'
 
   },
@@ -17,7 +17,7 @@ const slides = [
     legend: 'تجربة صوتية وبصرية مذهلة'
   },
   {
-    image: '/img/version3.jpg',
+    image: '/img/version1.jpg',
     legend: 'أحدث التقنيات لإحياء فعالياتك'
   },
   {

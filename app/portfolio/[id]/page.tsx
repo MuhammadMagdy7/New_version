@@ -63,7 +63,7 @@ const Page = ({ params }: PageProps) => {
     <motion.div 
       initial={{ opacity: 0 }} 
       animate={{ opacity: 1 }} 
-      className="min-h-screen bg-gray-50"
+      className="min-h-screen"
     >
       <div className="max-w-screen-2xl mx-auto px-4 py-8">
         <Breadcrumb items={breadcrumbItems} />

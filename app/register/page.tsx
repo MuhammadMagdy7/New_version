@@ -9,11 +9,11 @@ const Register = () => {
     const router = useRouter();
     const { data: session, status: sessionStatus } = useSession();
  
-    useEffect(() => {
-        if (sessionStatus === "authenticated") {
-            router.replace("/dashboard");
-        }
-    }, [sessionStatus, router]);
+    // useEffect(() => {
+    //     if (sessionStatus === "authenticated") {
+    //         router.replace("/dashboard");
+    //     }
+    // }, [sessionStatus, router]);
  
     const isValidEmail = (email: string) => {
         const emailRegex = /^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i;
@@ -59,13 +59,17 @@ const Register = () => {
             console.log(error);
         }
     };
- 
-    if (sessionStatus === "loading") {
-        return <h1>Loading...</h1>;
+
+    if(!session){
+        return  <p>Access Denied</p>
     }
  
+    // if (sessionStatus === "loading") {
+    //     return <h1>Loading...</h1>;
+    // }
+ 
     return (
-        sessionStatus !== "authenticated" && (
+        session && (
             <div className="justify-center mt-16">
                 <div className="w-full p-6 m-auto bg-white rounded-md shadow-md lg:max-w-lg">
                     <h1 className="text-3xl font-semibold text-center text-purple-700">Register</h1>

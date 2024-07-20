@@ -43,7 +43,7 @@ const Page = ({ params }: PageProps) => {
   }, [params.id]);
 
   return (
-    <div className="min-h-screen bg-gradient-to-b from-blue-50 to-white py-8">
+    <div className="min-h-screen py-8">
       <div className="container mx-auto px-4">
         <Breadcrumb items={breadcrumbItems} />
 
