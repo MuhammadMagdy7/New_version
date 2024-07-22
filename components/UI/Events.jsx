@@ -1,12 +1,17 @@
-//components//UI/Events.jsx
+// //components//UI/Events.jsx
+
 "use client";
 import { useEffect, useState, useMemo } from "react";
 import axios from "axios";
 import Link from "next/link";
-import Image from "next/image";
 import moment from "moment";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
+import { ButtonBase } from "../Layout/Button";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
+import InfiniteScroll from 'react-infinite-scroll-component';
+
 
 const Events = () => {
   const pathname = usePathname();
@@ -31,15 +36,18 @@ const Events = () => {
     fetchServices();
   }, []);
 
-  const handlePageChange = (page) => {
-    setCurrentPage(page);
-  };
-
   const selectedItems = useMemo(() => {
     if (!portfolio) return null;
-    const startIndex = (currentPage - 1) * itemsPerPage;
-    return portfolio.slice(startIndex, startIndex + itemsPerPage);
+    return portfolio.slice(0, currentPage * itemsPerPage);
   }, [portfolio, currentPage]);
+
+  const loadMore = () => {
+    setCurrentPage(prevPage => prevPage + 1);
+  };
+
+  const SkeletonLoader = () => (
+    <div className="animate-pulse bg-gray-200 h-48 rounded-lg"></div>
+  );
 
   if (error) {
     return (
@@ -48,109 +56,82 @@ const Events = () => {
       </div>
     );
   }
+  const EventCard = ({ item, index }) => (
+    <div className="relative overflow-hidden">
+      <motion.div
+        initial={{ opacity: 0, y: 20 }}
+        animate={{ opacity: 1, y: 0 }}
+        transition={{ duration: 0.5, delay: index * 0.1 }}
+      >
+        <Link href={`/portfolio/${item._id}`} className="block">
+          <motion.div 
+            className="bg-white rounded-lg min-h-[365px] shadow-md overflow-hidden transition hover:shadow-xl flex flex-col h-full"
+            whileHover={{ 
+              scale: 1.05,
+              transition: { duration: 0.3 }
+            }}
+          >
+            <div className="h-48 relative overflow-hidden">
+              <LazyLoadImage
+                src={item.images[0]}
+                alt={item.name}
+                effect="blur"
+                height={192}
+                width="100%"
+                className="object-cover object-center"
+              />
+            </div>
+            <div className="p-4 flex-grow flex flex-col justify-between">
+              <div>
+                <h3 className="text-primaryColor font-semibold text-lg">
+                  {item.name}
+                </h3>
+                <p className="text-paragraphColor mt-2 overflow-hidden text-ellipsis line-clamp-2">
+                  {item.description}
+                </p>
+              </div>
+              <p className="text-gray-400 mt-4 text-sm">
+                {moment(item.date).format("YYYY-MM-DD")}
+              </p>
+            </div>
+          </motion.div>
+        </Link>
+      </motion.div>
+    </div>
+  );
 
   return (
     <div>
-      <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
-        {pathname === "/"
-          ? selectedItems?.slice(0,3).map((item, i) => (
-            <motion.div
-              key={item._id}
-              initial={{ opacity: 0, y: 20 }}
-              animate={{ opacity: 1, y: 0 }}
-              transition={{ duration: 0.5, delay: i * 0.1 }}
-              whileHover={{ scale: 1.05 }}
-            >
-              <Link href={`/portfolio/${item._id}`} className="block">
-                <div className="bg-white rounded-lg shadow-md overflow-hidden my-12 transition hover:shadow-xl flex flex-col h-full">
-                  <div className="h-48 relative overflow-hidden">
-                    <Image
-                      src={item.images[0]}
-                      alt={item.name}
-                      layout="fill"
-                      objectFit="cover"
-                      objectPosition="center"
-                      placeholder="blur"
-                      blurDataURL={item.images[0]}
-                    />
-                  </div>
-                  <div className="p-4 flex-grow flex flex-col justify-between">
-                    <div>
-                      <h3 className="text-primaryColor font-semibold text-lg">
-                        {item.name}
-                      </h3>
-                      <p className="text-paragraphColor mt-2 overflow-hidden text-ellipsis line-clamp-2">
-                        {item.description}
-                      </p>
-                    </div>
-                    <p className="text-gray-400 mt-4 text-sm">
-                      {moment(item.date).format("YYYY-MM-DD")}
-                    </p>
-                  </div>
-                </div>
-              </Link>
-            </motion.div>
-          ))
-          : selectedItems?.map((item, i) => (
-              <motion.div
-                key={item._id}
-                initial={{ opacity: 0, y: 20 }}
-                animate={{ opacity: 1, y: 0 }}
-                transition={{ duration: 0.5, delay: i * 0.1 }}
-                whileHover={{ scale: 1.05 }}
-              >
-                <Link href={`/portfolio/${item._id}`} className="block">
-                  <div className="bg-white rounded-lg shadow-md overflow-hidden transition hover:shadow-xl flex flex-col h-full">
-                    <div className="h-48 relative overflow-hidden">
-                      <Image
-                        src={item.images[0]}
-                        alt={item.name}
-                        layout="fill"
-                        objectFit="cover"
-                        objectPosition="center"
-                        placeholder="blur"
-                        blurDataURL={item.images[0]}
-                      />
-                    </div>
-                    <div className="p-4 flex-grow flex flex-col justify-between">
-                      <div>
-                        <h3 className="text-primaryColor font-semibold text-lg">
-                          {item.name}
-                        </h3>
-                        <p className="text-paragraphColor mt-2 overflow-hidden text-ellipsis line-clamp-2">
-                          {item.description}
-                        </p>
-                      </div>
-                      <p className="text-gray-400 mt-4 text-sm">
-                        {moment(item.date).format("YYYY-MM-DD")}
-                      </p>
-                    </div>
-                  </div>
-                </Link>
-              </motion.div>
-            ))}
-      </div>
+      {!selectedItems ? (
+        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+          {[...Array(6)].map((_, index) => (
+            <SkeletonLoader key={index} />
+          ))}
+        </div>
+      ) : (
+        <InfiniteScroll
+          dataLength={selectedItems.length}
+          next={loadMore}
+          hasMore={selectedItems.length < (portfolio?.length || 0)}
+          loader={<h4>Loading...</h4>}
+        >
+          <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6 mt-8">
+            {pathname === "/"
+              ? selectedItems.slice(0, 3).map((item, i) => (
+                  <EventCard key={item._id} item={item} index={i} />
+                ))
+              : selectedItems.map((item, i) => (
+                  <EventCard key={item._id} item={item} index={i} />
+                ))}
+          </div>
+        </InfiniteScroll>
+      )}
 
-      {pathname === "/"
-        ? ""
-        : portfolio && (
-            <div className="flex justify-center mt-8">
-              <button
-                onClick={() => handlePageChange(currentPage - 1)}
-                disabled={currentPage === 1}
-                className="btn px-4 py-2 mx-2 bg-blue-500 text-white rounded disabled:opacity-50"
-              >
-                Previous
-              </button>
-              <button
-                onClick={() => handlePageChange(currentPage + 1)}
-                disabled={currentPage * itemsPerPage >= portfolio.length}
-                className="btn px-4 py-2 mx-2 bg-blue-500 text-white rounded disabled:opacity-50"
-              >
-                Next
-              </button>
-            </div>
-          )}
+      {pathname === "/" && selectedItems && selectedItems.length > 3 && (
+        <div className="text-center mt-8">
+          <ButtonBase text="Show more" link="/portfolio" />
+        </div>
+      )}
     </div>
   );
 };

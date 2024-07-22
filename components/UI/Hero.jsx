@@ -1,5 +1,7 @@
 import { motion } from 'framer-motion';
 import { ButtonBase, ButtonPill } from "../Layout/Button";
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const Hero = () => {
   return (
@@ -43,11 +45,15 @@ const Hero = () => {
           transition={{ duration: 0.5, delay: 0.6 }}
           className="relative max-w-4xl mx-auto"
         >
-          <img
-            src="/img/version5.jpg"
-            alt="Event setup"
-            className="rounded-lg shadow-2xl"
-          />
+
+                        <LazyLoadImage
+                src="/img/version5.jpg"
+                alt="Event setup"
+                effect="blur"
+                height="100%"
+                width="100%"
+                className="rounded-lg shadow-2xl"
+                />
           <div className="absolute inset-0 bg-black opacity-30 rounded-lg"></div>
           <div className="absolute inset-0 flex items-center justify-center">
             <p className="text-gray-300 text-3xl font-bold">We make your events extraordinary</p>

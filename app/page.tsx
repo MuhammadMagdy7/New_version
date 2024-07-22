@@ -7,6 +7,8 @@ import Hero from "@/components/UI/Hero";
 import HomeCarousel from "@/components/UI/Carousel";
 import Events from "@/components/UI/Events";
 import GetStarted from "@/components/Layout/CardWork";
+import VideoSection from "@/components/UI/VideoSection";
+
 export default function Home() {
   const pageVariants = {
     initial: { opacity: 0, y: 20 },
@@ -25,6 +27,7 @@ export default function Home() {
     >
       <HomeCarousel />
       <Hero />
+      <VideoSection />
       <div className="container pb-12 space-y-16">
         <TrustedBySection />
         <hr className="border-t-2 border-gray-300 my-4" />

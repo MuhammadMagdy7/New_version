@@ -83,7 +83,7 @@ const Footer = () => {
             <div>
               <h3 className="text-primaryColor font-bold">Contact Info</h3>
               <ul className="flex flex-col justify-center items-center md:block">
-                <li className="mt-2 text-gray-300 flex items-start">
+                <li className="mt-2 text-gray-300 flex items-center gap-2">
                   <span>
                     <MdHome />
                   </span>

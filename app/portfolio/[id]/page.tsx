@@ -3,7 +3,6 @@
 
 import { useEffect, useState } from 'react';
 import axios from 'axios';
-import Image from 'next/image';
 import { Carousel } from 'react-responsive-carousel';
 import 'react-responsive-carousel/lib/styles/carousel.min.css';
 import { motion } from 'framer-motion';
@@ -59,6 +58,13 @@ const Page = ({ params }: PageProps) => {
     );
   }
 
+  if (!project)
+    { return (<div className='container'>
+      <Spinner />
+      
+      </div>
+    )}
+
   return (
     <motion.div 
       initial={{ opacity: 0 }} 
@@ -68,7 +74,6 @@ const Page = ({ params }: PageProps) => {
       <div className="max-w-screen-2xl mx-auto px-4 py-8">
         <Breadcrumb items={breadcrumbItems} />
         
-        {project ? (
           <section className="relative z-0 mt-8">
             <motion.div 
               initial={{ y: 20, opacity: 0 }} 
@@ -112,11 +117,7 @@ const Page = ({ params }: PageProps) => {
               </motion.div>
             </motion.div>
           </section>
-        ) : (
-          <div className="flex justify-center items-center h-64">
-            <Spinner />
-          </div>
-        )}
+
       </div>
     </motion.div>
   );

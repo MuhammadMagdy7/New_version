@@ -12,7 +12,6 @@ import { VscChromeClose } from "react-icons/vsc";
 import Image from "next/image";
 import { signOut, useSession } from "next-auth/react";
 import { usePathname } from "next/navigation";
-
 const Header = () => {
   const [mobileMenu, setMobileMenu] = useState(false);
   const [show, setShow] = useState("translate-y-0");
@@ -51,7 +50,9 @@ const Header = () => {
     >
       <Wrapper className="h-[60px] flex justify-between items-center">
         <Link href="/">
-          <Image src={logo} className="w-[40px] md:w-[60px]" />
+          <Image src={logo} width={40} height={40} className="w-[40px] md:w-[60px]" />
+          
+          
         </Link>
 
 

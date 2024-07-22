@@ -6,7 +6,8 @@ import axios from "axios";
 import HeaderSec from "../Layout/Header";
 import Spinner from "../Layout/Spinner";
 import { motion } from 'framer-motion';
-import Image from 'next/image';
+import { LazyLoadImage } from 'react-lazy-load-image-component';
+import 'react-lazy-load-image-component/src/effects/blur.css';
 
 const FeaturesSection = () => {
   const [services, setServices] = useState(null);
@@ -87,12 +88,15 @@ const FeaturesSection = () => {
                 />
               </div>
               <div className="flex-1 relative h-64">
-                <Image
-                  src={service.images[0]}
-                  alt={service.name}
-                  layout="fill"
-                  objectFit="cover"
-                />
+
+                               <LazyLoadImage
+                src={service.images[0]}
+                alt={service.name}
+                effect="blur"
+                height={192}
+                width="100%"
+                className="object-cover object-center"
+              />
               </div>
             </motion.div>
           ))}

@@ -7,6 +7,7 @@ import axios from "axios";
 import Spinner from "../Layout/Spinner";
 import { motion } from 'framer-motion';
 
+
 const TrustedBySection = () => {
   const [customers, setCustomers] = useState(null);
   const [error, setError] = useState(null);
@@ -31,7 +32,7 @@ const TrustedBySection = () => {
         {customers.map((logo, index) => (
           <motion.div 
             key={logo._id} 
-            className="flex justify-center"
+            className="flex justify-center items-center"
             initial={{ opacity: 0, scale: 0.5 }}
             animate={{ opacity: 1, scale: 1 }}
             transition={{ duration: 0.5, delay: index * 0.1 }}
@@ -44,6 +45,7 @@ const TrustedBySection = () => {
               height={120}
               className="object-contain filter grayscale hover:grayscale-0 transition-all duration-300"
             />
+
           </motion.div>
         ))}
       </div>
@@ -58,16 +60,19 @@ const TrustedBySection = () => {
     );
   }
 
+  if (!customers)
+    { return (<div className='container'>
+      <Spinner />
+      
+      </div>
+    )}
+
   return (
     <div>
       <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
         The Leading Companies That Trust Us
       </h2>
-      {customers ? customerGrid : (
-        <div className="flex justify-center items-center h-64">
-          <Spinner />
-        </div>
-      )}
+      {customers && customerGrid}
     </div>
   );
 };

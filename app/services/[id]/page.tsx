@@ -42,12 +42,19 @@ const Page = ({ params }: PageProps) => {
     fetchService();
   }, [params.id]);
 
+
+  if (!service)
+    { return (<div className='container'>
+      <Spinner />
+      
+      </div>
+    )}
+
   return (
     <div className="min-h-screen py-8">
       <div className="container mx-auto px-4">
         <Breadcrumb items={breadcrumbItems} />
 
-        {service ? (
           <section className="mt-8">
             <div className="bg-white rounded-xl shadow-lg overflow-hidden">
               <div className="grid grid-cols-1 lg:grid-cols-2">
@@ -83,11 +90,6 @@ const Page = ({ params }: PageProps) => {
               </div>
             </div>
           </section>
-        ) : (
-          <div className="flex justify-center items-center h-64">
-            <Spinner />
-          </div>
-        )}
       </div>
     </div>
   );
