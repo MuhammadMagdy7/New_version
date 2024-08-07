@@ -1,3 +1,4 @@
+//components/UI/ChangePassword.tsx
 import React, { useState } from 'react';
 
 interface ChangePasswordFormProps {

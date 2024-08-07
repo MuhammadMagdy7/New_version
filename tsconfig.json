@@ -21,6 +21,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "models/Project.js", "app/api/auth/[...nextauth]/route.ts", "lib/cloudinary.js", "app/admin/page.tsx", "app/auth/signin.jsx", "components/Layout/Menu.jsx", "app/portfolio/[id]/page.tsx"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "models/Project.js", "app/api/auth/[...nextauth]/route.ts", "lib/cloudinary.js", "app/admin/page.tsx", "app/auth/signin.jsx", "components/Layout/Menu.jsx", "app/portfolio/[id]/page.tsx", "app/api/changepassword/route.ts"],
   "exclude": ["node_modules"]
 }

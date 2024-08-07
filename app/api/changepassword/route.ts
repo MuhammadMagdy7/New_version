@@ -1,8 +1,9 @@
+// app/api/changepassword/route.ts
 import { NextRequest, NextResponse } from 'next/server';
 import bcrypt from 'bcryptjs';
 import User from '@/models/User';
 import { getServerSession } from "next-auth/next";
-import { authOptions } from "../auth/[...nextauth]/route";
+import { authOptions } from "@/app/auth";
 import connect from "@/utils/db";
 
 export async function POST(req: NextRequest) {
@@ -27,7 +28,6 @@ export async function POST(req: NextRequest) {
 
     const isMatch = await bcrypt.compare(currentPassword, user.password);
     if (!isMatch) {
-      console.log(currentPassword, user.password)
       return NextResponse.json({ error: 'كلمة المرور الحالية غير صحيحة' }, { status: 400 });
     }
 
