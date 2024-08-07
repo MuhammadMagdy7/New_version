@@ -7,7 +7,6 @@ import ChangePasswordForm from "@/components/UI/ChangePassword";
 
 const AccountPage = () => {
   const { data: session, status } = useSession();
-
   if (status === "loading") {
     return <p>Loading...</p>;
   }
@@ -22,12 +21,14 @@ const AccountPage = () => {
       <div className="mb-6">
         <ChangePasswordForm email={session?.user?.email} />
       </div>
-      <Link
+
+      {session?.user?.admin ? (<Link
         className="block text-center text-blue-500 hover:underline mt-2"
         href="/register"
       >
         Register new account
-      </Link>
+      </Link>) :("") }
+      
     </div>
   );
 };

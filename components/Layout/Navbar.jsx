@@ -73,7 +73,7 @@ const Header = () => {
                                 {showDropdown && (
                                     <div className='absolute top-0 right-0 bg-primaryColorLight p-5'>
                                         <AiOutlineClose onClick={handleHideDropdown} className='w-full cursor-pointer' />
-                                        <Link onClick={handleHideDropdown} href={"/account"}>Profile</Link>
+                                        <Link onClick={handleHideDropdown} href={"/account"}>{session.user.name}</Link>
                                         <Link onClick={handleHideDropdown} href="/dashboard"  className={ pathname === '/dashboard' ? "text-primaryColor font-bold block" : "block"}>Create</Link>
                                         <button onClick={() => {signOut(); handleHideDropdown();}}>Logout</button>
                                     </div>

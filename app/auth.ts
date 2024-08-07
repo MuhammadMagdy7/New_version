@@ -14,6 +14,7 @@ export const authOptions: AuthOptions = {
         credentials: {
             email: { label: "Email", type: "text" },
             password: { label: "Password", type: "password" },
+            admin: {lavel:"Admin", type: "boolean"},
         },
         async authorize(credentials) {
             await connect();
@@ -42,10 +43,21 @@ export const authOptions: AuthOptions = {
         },    }),
   ],
   callbacks: {
-    async signIn({ user, account }) {
-        if (account?.provider === "credentials") {
-            return true;
-        }
-        return false;
-    },  },
+    async jwt({ token, user }) {
+      if (user) {
+        token.name = user.name;
+        token.email = user.email;
+        token.admin = user.admin;
+      }
+      return token;
+    },
+    async session({ session, token }) {
+      if (session.user) {
+        session.user.name = token.name as string;
+        session.user.email = token.email as string;
+        session.user.admin = token.admin as boolean;
+      }
+      return session;
+    },
+  },
 };

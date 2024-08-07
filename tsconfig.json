@@ -12,6 +12,7 @@
     "isolatedModules": true,
     "jsx": "preserve",
     "incremental": true,
+    "typeRoots": ["./types", "./node_modules/@types"],
     "plugins": [
       {
         "name": "next"
@@ -21,6 +22,6 @@
       "@/*": ["./*"]
     }
   },
-  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx", ".next/types/**/*.ts", "models/Project.js", "app/api/auth/[...nextauth]/route.ts", "lib/cloudinary.js", "app/admin/page.tsx", "app/auth/signin.jsx", "components/Layout/Menu.jsx", "app/portfolio/[id]/page.tsx", "app/api/changepassword/route.ts"],
+  "include": ["next-env.d.ts", "**/*.ts", "**/*.tsx","types/**/*.ts" , ".next/types/**/*.ts", "models/Project.js", "app/api/auth/[...nextauth]/route.ts", "lib/cloudinary.js", "app/admin/page.tsx", "app/auth/signin.jsx", "components/Layout/Menu.jsx", "app/portfolio/[id]/page.tsx", "app/api/changepassword/route.ts", "app/account/page.jsx"],
   "exclude": ["node_modules"]
 }
