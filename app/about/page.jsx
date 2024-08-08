@@ -1,3 +1,4 @@
+//app/about/page.jsx
 "use client"
 
 import dynamic from 'next/dynamic';

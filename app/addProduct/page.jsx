@@ -3,12 +3,13 @@
 
 import { useSession } from "next-auth/react";
 import FormUI from "../../components/Layout/FormUI";
+import AccessDenied from "@/components/Layout/AccessDenied";
 
 export default function AddProduct() {
   const { data: session } = useSession();
 
   if (!session) {
-    return <p>Access Denied</p>;
+    return <AccessDenied />;
   }
 
   return (

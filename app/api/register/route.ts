@@ -1,3 +1,4 @@
+//app/register/route.ts
 import User from "@/models/User";
 import connect from "@/utils/db";
 import bcrypt from "bcryptjs"; //https://www.npmjs.com/package/bcryptjs npm install bcryptjs

@@ -3,6 +3,7 @@ import React, { useEffect, useState } from "react";
 import Link from "next/link";
 import { useRouter } from "next/navigation";
 import { useSession } from "next-auth/react";
+import AccessDenied from "@/components/Layout/AccessDenied";
  
 const Register = () => {
     const [error, setError] = useState("");
@@ -61,7 +62,7 @@ const Register = () => {
     };
 
     if(!session){
-        return  <p>Access Denied</p>
+        return  <AccessDenied />
     }
  
     // if (sessionStatus === "loading") {

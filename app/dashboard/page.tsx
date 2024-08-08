@@ -8,6 +8,7 @@ import Tablecom from "@/components/Tablecom";
 import Link from "next/link";
 import Spinner from "@/components/Layout/Spinner";
 import { Item } from "@/types";
+import AccessDenied from "@/components/Layout/AccessDenied";
 
 const useFetchData = <T extends Item>(url: string) => {
   const [data, setData] = useState<T[]>([]);
@@ -88,7 +89,7 @@ export default function Admin() {
   );
 
   if (!session) {
-    return <p>Access Denied</p>;
+    return <AccessDenied />;
   }
 
   if (servicesLoading || productsLoading || employeesLoading) {

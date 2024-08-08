@@ -4,6 +4,7 @@
 import { useSession } from "next-auth/react";
 import Link from "next/link";
 import ChangePasswordForm from "@/components/UI/ChangePassword";
+import AccessDenied from "@/components/Layout/AccessDenied";
 
 const AccountPage = () => {
   const { data: session, status } = useSession();
@@ -12,7 +13,7 @@ const AccountPage = () => {
   }
 
   if (status === "unauthenticated") {
-    return <p>Access Denied</p>;
+    return <AccessDenied />;
   }
 
   return (
