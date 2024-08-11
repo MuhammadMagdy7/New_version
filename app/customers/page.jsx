@@ -8,6 +8,11 @@ import CustomerStories from '@/components/UI/CustomerStories';
 import HeaderSec from '@/components/Layout/Header';
 
 const Customers = () => {
+  const gradientStyle = {
+    background: 'linear-gradient(to right, #69CCDF, #EA3478)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
   return (
     // className="bg-gradient-to-b from-blue-50 via-white to-blue-50 "
     <div >
@@ -32,7 +37,7 @@ const Customers = () => {
           className="mb-20"
         >
           
-          <h2 className="text-5xl font-bold text-center my-8 pt-16 text-primaryColor">Our Clients' Experiences</h2>
+          <h2 style={gradientStyle} className="text-5xl font-bold text-center my-8 pt-16">Our Clients' Experiences</h2>
           <TestimonialSection />
         </motion.section>
 
@@ -41,7 +46,7 @@ const Customers = () => {
           animate={{ opacity: 1, y: 0 }}
           transition={{ duration: 0.5, delay: 0.4 }}
         >
-          <h2 className="text-3xl font-bold text-center mb-8 text-gray-800">Success Stories</h2>
+          <h2 style={gradientStyle} className="text-6xl mb-28 font-extrabold text-center text-gray-800">Success Stories</h2>
           <CustomerStories />
         </motion.section>
       </div>

@@ -24,6 +24,11 @@ const testimonials = [
   }
 ];
 const TestimonialSection = () => {
+  const gradientStyle = {
+    background: 'linear-gradient(to left, #69CCDF, #EA3478)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
   const [currentTestimonial, setCurrentTestimonial] = useState(0);
 
   const nextTestimonial = () => {
@@ -62,7 +67,7 @@ const TestimonialSection = () => {
 
   return (
     <section className="py-20">
-      <h2 className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
+      <h2 style={gradientStyle} className="text-3xl font-bold text-center mb-12">What Our Customers Say</h2>
       <div className="bg-white rounded-xl shadow-lg p-8 max-w-4xl mx-auto">
         {currentTestimonialContent}
         <div className="flex justify-between mt-8">

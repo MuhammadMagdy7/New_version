@@ -7,6 +7,7 @@ const HeaderSec = ({ title  }) => {
     WebkitBackgroundClip: 'text',
     WebkitTextFillColor: 'transparent',
   };
+  
   return (
     <motion.div
       initial={{ opacity: 0, y: -50 }}

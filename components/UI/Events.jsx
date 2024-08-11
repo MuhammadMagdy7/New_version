@@ -8,9 +8,9 @@ import moment from "moment";
 import { motion } from "framer-motion";
 import { usePathname } from "next/navigation";
 import { ButtonBase } from "../Layout/Button";
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+
 import InfiniteScroll from 'react-infinite-scroll-component';
+import Image from "next/image";
 
 
 const Events = () => {
@@ -72,13 +72,12 @@ const Events = () => {
             }}
           >
             <div className="h-48 relative overflow-hidden">
-              <LazyLoadImage
+              <Image
                 src={item.images[0]}
                 alt={item.name}
-                effect="blur"
-                height={192}
-                width="100%"
-                className="object-cover object-center"
+                height={100}
+                width={100}
+                className="w-full object-cover object-center"
               />
             </div>
             <div className="p-4 flex-grow flex flex-col justify-between">

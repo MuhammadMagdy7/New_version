@@ -9,15 +9,30 @@ import Footer from "@/components/Layout/Footer";
 import Whatsapp from "@/components/Layout/Whatsapp";
 
 // تحديد الأوزان المطلوبة للخط Roboto
-const lora = Lora({
-  subsets: ["latin"],
+const lora = Lora({  
+  subsets: ['latin'],
+  display: 'swap',
+  variable: '--font-lora',  
   weight: [ "600", "400", "500", "700"], // تحديد الأوزان هنا
 });
 
 export const metadata: Metadata = {
-  title: "Version AVI",
-  description:
-    "Versionavi is a premier company specializing in the rental and sales of high-quality audio-visual equipment in Egypt. We offer comprehensive services including LED screens, sound systems, lighting, and photography/videography. With over 13 years of experience and a dedicated team, we ensure innovative and reliable solutions for all your event needs. Join us today and experience the Versionavi difference.",
+
+  title: "Home | Version AVI - Audio-Visual Excellence in Egypt",
+  description: "Versionavi offers top-quality audio-visual equipment rental and sales in Egypt. Specializing in LED screens, sound systems, lighting, and photography/videography for over 13 years.",
+  keywords: "audio-visual equipment, LED screens, sound systems, lighting, event services, Egypt",
+  openGraph: {
+    title: "Version AVI - Premier Audio-Visual Equipment Rental and Sales",
+    description: "High-quality audio-visual solutions for your events in Egypt.",
+    images: [
+      {
+        url: "/img/logo.jpg",
+        width: 1200,
+        height: 630,
+        alt: "Version AVI Overview",
+      },
+    ],
+  },
   icons: {
     icon: "/img/logo.ico",
   },
@@ -34,7 +49,7 @@ export default async function RootLayout({
       <head>
         <link rel="icon" href="/img/logo.ico" sizes="any" />
       </head>
-      <body className={lora.className}> 
+      <body className={`${lora.variable} font-sans`}> 
         <SessionProvider session={session}>
           <Navbar />
           <div className="min-h-screen bg-gradient-to-b from-white to-blue-50">

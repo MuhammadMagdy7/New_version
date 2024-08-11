@@ -9,19 +9,19 @@ import { motion } from 'framer-motion';
 const slides = [
   {
     image: '/img/version3.jpg',
-    legend: 'فريق محترف لتلبية احتياجاتك'
+    legend: 'A professional team to meet your needs'
   },
   {
     image: '/img/version2.jpg',
-    legend: 'تجربة صوتية وبصرية مذهلة'
+    legend: "An amazing audiovisual experience"
   },
   {
     image: '/img/version1.jpg',
-    legend: 'أحدث التقنيات لإحياء فعالياتك'
+    legend: "The latest technologies to bring your events to life"
   },
   {
     image: '/img/version4.jpg',
-    legend: 'أفضل حفلات الرقص في المدينة'
+    legend: "The best dance parties in the city"
   }
 ];
 const HomeCarousel = () => {

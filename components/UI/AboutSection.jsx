@@ -2,8 +2,8 @@
 "use client"
 
 import { motion } from 'framer-motion';
-import { LazyLoadImage } from 'react-lazy-load-image-component';
-import 'react-lazy-load-image-component/src/effects/blur.css';
+import Image from 'next/image';
+
 
 const AboutSection = () => {
   const containerVariants = {
@@ -43,13 +43,12 @@ const AboutSection = () => {
         <div className="grid grid-cols-1 gap-12 lg:grid-cols-2">
           <motion.div className="relative h-64 sm:h-80 lg:h-full" variants={itemVariants}>
 
-                          <LazyLoadImage
+                          <Image
                 src="/img/version4.jpg"
                 alt="Event setup"
-                effect="blur"
-                height={192}
-                width="100%"
-                className="rounded-lg shadow-lg"
+                height={100}
+                width={500}
+                className="w-full rounded-lg shadow-lg"
                 />
           </motion.div>
 

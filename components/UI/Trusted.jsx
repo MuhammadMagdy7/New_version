@@ -8,9 +8,16 @@ import Spinner from "../Layout/Spinner";
 import { motion } from 'framer-motion';
 
 
+
 const TrustedBySection = () => {
   const [customers, setCustomers] = useState(null);
   const [error, setError] = useState(null);
+
+  const gradientStyle = {
+    background: 'linear-gradient(to left, #69CCDF, #EA3478)',
+    WebkitBackgroundClip: 'text',
+    WebkitTextFillColor: 'transparent',
+  };
 
   useEffect(() => {
     const fetchCustomers = async () => {
@@ -69,7 +76,7 @@ const TrustedBySection = () => {
 
   return (
     <div>
-      <h2 className="text-3xl font-bold text-center mb-12 text-gray-800">
+      <h2 style={gradientStyle} className="text-3xl font-bold text-center mb-12">
         The Leading Companies That Trust Us
       </h2>
       {customers && customerGrid}

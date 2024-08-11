@@ -9,13 +9,13 @@ const customerStories = [
   {
     name: "Advanced Technology Company",
     description: "How we helped organize a large tech conference with over 5,000 attendees",
-    image: "https://example.com/tech-conference.jpg",
+    image: "/img/version6.jpg",
     link: "/case-studies/advanced-tech-company",
   },
   {
     name: "Annual Music Festival",
     description: "Providing an exceptional audio experience for over 50,000 spectators",
-    image: "https://example.com/music-festival.jpg",
+    image: "/img/version4.jpg",
     link: "/case-studies/annual-music-festival",
   },
   // Add more case studies...
